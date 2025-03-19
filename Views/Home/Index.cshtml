@@ -1,8 +1,16 @@
-﻿@{
+﻿@* @inject IHttpContextAccessor contex *@
+@using Microsoft.AspNetCore.Http
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* @if(contex.HttpContext.Session.GetString("username" != null)) *@
+
+@if (Context.Session?.GetString("username") != null)
+{
+    <h1>Welcome To Home Page</h1>
+}
+else
+{
+    <h1>Please LogIn First....!!</h1>
+}
