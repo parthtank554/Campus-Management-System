@@ -28,13 +28,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Employee</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Employee" asp-action="Index">Show Employee</a></li>
-                                <li><a class="dropdown-item" asp-controller="Employee" asp-action="AddEmployee">Add Employee</a></li>
-                            </ul>
-                        </li>
+                        @if (Context.Session.GetString("username") != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Employee</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-controller="Employee" asp-action="Index">Show Employee</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Employee" asp-action="AddEmployee">Add Employee</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (Context.Session.GetString("username") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Logout", "Account")">Logout (@Context.Session.GetString("username"))</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
