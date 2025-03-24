@@ -1,0 +1,47 @@
+﻿@model Campus_Management_System.Models.TeacherModel
+
+@{
+    ViewData["Title"] = "Add Teacher";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Add New Teacher</h2>
+
+    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label asp-for="TeacherName" class="form-label">Teacher Name</label>
+            <input asp-for="TeacherName" class="form-control" placeholder="Enter teacher name" required>
+            <span asp-validation-for="TeacherName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Subject" class="form-label">Subject</label>
+            <input asp-for="Subject" class="form-control" placeholder="Enter subject" required>
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Semester" class="form-label">Department</label>
+            <input asp-for="Semester" class="form-control" placeholder="Enter department" required>
+            <span asp-validation-for="Semester" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Experience" class="form-label">Experience</label>
+            <input asp-for="Experience" class="form-control" placeholder="Enter experience (optional)">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Salary" class="form-label">Salary</label>
+            <input asp-for="Salary" class="form-control" placeholder="Enter salary" required>
+            <span asp-validation-for="Salary" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
