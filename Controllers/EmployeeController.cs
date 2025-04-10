@@ -3,9 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Campus_Management_System.Controllers
 {
+    [Route("Test")]  // this is the routing which is used for the url 
+                      //eg.https://localhost:7011/Test/Emp  (Emp is the Add Employee routing)
     public class EmployeeController : Controller
     {
         EmployeeModel empObj = new EmployeeModel();
+        
+        
+        [Route("Show")]
         public IActionResult Index()
         {
             empObj = new EmployeeModel();
@@ -13,6 +18,7 @@ namespace Campus_Management_System.Controllers
 
             return View(lst);
         }
+        [Route("Emp")]  // this is the attribute routing 
         public IActionResult AddEmployee()
         {
             return View();  
@@ -38,6 +44,8 @@ namespace Campus_Management_System.Controllers
 
             return View();
         }
+        [Route("Update")]
+        [Route("Emp_Update")]
         public IActionResult EditEmployee()
         {
             return View();
@@ -68,6 +76,8 @@ namespace Campus_Management_System.Controllers
             }
             return View();
         }
+
+        [Route("Dlt_emp")]
         [HttpGet]
         public IActionResult DeleteEmployee(string id)
         {

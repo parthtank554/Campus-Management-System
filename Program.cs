@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,5 +27,11 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+//this is the convensional Routing
+// this routing is the used for if you will apply this both urls then it's working 
+app.MapControllerRoute(
+    name:"test1",
+    pattern: "EmpAdd",
+    defaults : new { Controller = "Employee", action = "AddEmployee" }
+    );
 app.Run();

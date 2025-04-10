@@ -11,7 +11,7 @@ namespace Campus_Management_System.Models
 {
     public class EmployeeModel
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CMS;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
+        SqlConnection con = new SqlConnection(@"#");
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter name")]
@@ -93,7 +93,7 @@ namespace Campus_Management_System.Models
         }
         public bool delete(EmployeeModel Emp)
         {
-            SqlCommand cmd = new SqlCommand("delete tbl_emp where Id = @id", con);
+            SqlCommand cmd = new SqlCommand("delete from tbl_emp where Id = @id", con);
             cmd.Parameters.AddWithValue("@id", Emp.Id);
             con.Open();
             int i = cmd.ExecuteNonQuery();
